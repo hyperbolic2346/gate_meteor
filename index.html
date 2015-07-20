@@ -1,0 +1,52 @@
+<head>
+  <title>Gate</title>
+  <meta name="viewport" content="width=device-width, user-scalable=no">
+  <!--<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600' rel='stylesheet' type='text/css'>-->
+</head>
+
+<body>
+  <div class="outer">
+    <div class="logo"></div>
+    <h1 class="title">Gate</h1>
+    {{> video}}
+    {{> controls}}
+    {{> videos}}
+  </div>
+</body>
+
+<template name="video">
+  <div class="video"><img id='live_video_img' data-feed='http://gate.burntsheep.com:9081/' /></div>
+</template>
+
+<template name="controls">
+  <div class="controls">
+    {{#each gates}}
+      {{> gate}}
+    {{/each}}
+  </div>
+</template>
+
+<template name="gate">
+  <div class="gate_control_div">
+    <div class="gate_state">{{gate_state}}</div>
+    <div class="gate_hold_state">{{gate_hold_state}}</div>
+    {{#if gate_hold_info}}
+      <div class="gate_hold_info">{{gate_hold_info}}</div>
+    {{/if}}
+  </div>
+</template>
+
+<template name="videos">
+  <div class="gate_videos">
+    {{#each videos}}
+      {{>video}}
+    {{/each}}
+  </div>
+</template>
+
+<template name="video">
+  <div class="camera_video">
+    <a class="html5lightbox" href="{{webm_video}}" data-ipad="{{ipad_video}}" data-iphone="{{iphone_video}}" data-width="640" data-height="480"><img src="{{thumbnail}}" width="100%" /></a>
+  </div>
+</template>
+
